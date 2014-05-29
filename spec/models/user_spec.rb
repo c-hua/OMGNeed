@@ -1,5 +1,18 @@
 require 'spec_helper'
 
+
+# dry up the code for presence validation of user's columns
+# change @user password to meet the length validation
+# change bcrypt gem to bcrypt-ruby
+
+# validate the length of password
+#validate the presence of password
+#validate the presence of password confirmation
+#validate the unqiueness of email
+#validate the format of email
+#validate thelength of username
+
+
 describe User do
  before{ @user = User.new(username: 'sample', name: 'test', email: 'test@sample.com', password: 'sample', password_confirmation: 'sample') }
   subject {@user}
