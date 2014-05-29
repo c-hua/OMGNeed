@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 
-# dry up the code for presence validation of user's columns
-# change @user password to meet the length validation
-# change bcrypt gem to bcrypt-ruby
+
+
+
 
 # validate the length of password
 #validate the presence of password
@@ -14,7 +14,7 @@ require 'spec_helper'
 
 
 describe User do
- before{ @user = User.new(username: 'sample', name: 'test', email: 'test@sample.com', password: 'sample', password_confirmation: 'sample') }
+ before{ @user = User.new(username: 'sample', name: 'test', email: 'test@sample.com', password: 'foobar', password_confirmation: 'foobar') }
   subject {@user}
 
   it { should respond_to(:username) }
@@ -27,67 +27,75 @@ describe User do
   it { should be_valid }
 
   describe "without a username" do
-  	it "should not be valid" do
-  		@user.username = "" 
-  		expect(@user).to_not be_valid
-  	end
+  		before { @user.username = "" }
+  		it { should_not be_valid }
+ 
   end
 
   describe "without a name" do
-  	it "should not be valid" do
-  		@user.name = ""
-  		expect(@user).to_not be_valid
-  	end
+  	before { @user.name = "" }
+      it { should_not be_valid }
   end
 
   describe "without an email" do
-  	it "should not be valid" do
-  		@user.email = ""
-  		expect(@user).to_not be_valid
-  	end
+  		before { @user.email = "" }
+  		it { should_not be_valid }
   end
 
-  # describe "with empty password" do
-  # 	it "should not be valid" do
-  # 		@user.password = ""
+  describe "with empty password" do
+  		before do
+        @user = User.new(username: "username", name: "Example User", email: "user@example.com", password: "", password_confirmation: "")
+      end
+      it { should_not be_valid }
+  end
+
+  describe "with password less than 6 characters" do
+      before { @user.password = "short" }
+      before { @user.password_confirmation = "short" }
+      it { should_not be_valid }
+  end
+
+
+  describe "with empty password confirmation" do
+      before do
+        @user = User.new(username: "username", name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "")
+      end
+      it { should_not be_valid }
+  end
+
+  describe "password does not match password confirmation" do
+  		before { @user.password_confirmation = 'notmatch' }
+  		it { should_not be_valid }
+  end
+
+  describe "uniqueness of email address" do
+      before do
+        @user.save
+        @user2 = User.new(username: "username", name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+      end
+        it "should not be valid" do
+          expect(@user2).to_not be_valid
+        end
+    end
+
+  # describe "with invalid email" do
+  # 	it "should be invalid" do
+  # 		@user.email = "abc@abccom"
+  # 		expect(@user).to_not be_valid
+  # 	end
+  # 	it "should be invalid" do
+  # 		@user.email = "abcatabc.com"
+  # 		expect(@user).to_not be_valid
+  # 	end
+  # 	it "should be invalid" do
+  # 		@user.email = "abc@@abc.com"
+  # 		expect(@user).to_not be_valid
+  # 	end
+  # 	it "should be invalid" do
+  # 		@user.email = "abc @abc.com"
   # 		expect(@user).to_not be_valid
   # 	end
   # end
-
-  describe "password does not match password confirmation" do
-  	it "should not be valid" do
-  		@user.password = 'foo'
-  		@user.password_confirmation = 'bar'
-  		expect(@user).to_not be_valid
-  	end
-  end
-
-  describe "password match password confirmation" do
-  	it "should be valid" do
-  		@user.password = 'foo'
-  		@user.password_confirmation = 'foo'
-  		expect(@user).to be_valid
-  	end
-  end
-
-  describe "with invalid email" do
-  	it "should be invalid" do
-  		@user.email = "abc@abccom"
-  		expect(@user).to_not be_valid
-  	end
-  	it "should be invalid" do
-  		@user.email = "abcatabc.com"
-  		expect(@user).to_not be_valid
-  	end
-  	it "should be invalid" do
-  		@user.email = "abc@@abc.com"
-  		expect(@user).to_not be_valid
-  	end
-  	it "should be invalid" do
-  		@user.email = "abc @abc.com"
-  		expect(@user).to_not be_valid
-  	end
-  end
 
 
 
