@@ -1,16 +1,7 @@
 require 'spec_helper'
 
 
-
-
-
-
-# validate the length of password
-#validate the presence of password
-#validate the presence of password confirmation
-#validate the unqiueness of email
-#validate the format of email
-#validate thelength of username
+#validate email format 
 
 
 describe User do
@@ -71,7 +62,7 @@ describe User do
   describe "uniqueness of email address" do
       before do
         @user.save
-        @user2 = User.new(username: "username", name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
+        @user2 = User.new(username: "username", name: "Example User", email: "test@sample.com", password: "foobar", password_confirmation: "foobar")
       end
         it "should not be valid" do
           expect(@user2).to_not be_valid
