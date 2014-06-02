@@ -70,5 +70,84 @@ describe UsersController do
       expect(assigns(:user)).to be_a_new(User)
     end
   end
+
+
+  describe "POST create" do
+    describe "with valid attribute" do 
+      it "should save the user to the database" do
+        expect do
+          post :create, user: valid_attributes
+        end.to change(User,:count).by(1)
+      end
+
+      xit "should redirect user to '#'" do
+        expect(response).to render_template '#'
+      end
+    end
+
+
+    describe "with invalid attribute" do 
+      let :invalid_attributes do
+       { username: nil,
+        name: nil,
+        email: nil,
+        password: nil,
+        password_confirmation: nil }
+      end
+
+      it "should not save the user to the database" do
+        expect do
+          post :create, user: invalid_attributes
+        end.to_not change(User,:count).by(1)
+      end
+
+      it "should render the new template" do
+        expect(response).to render_template :new
+      end
+    end
+  end
+
+  describe "Put update" do
+    before do
+      @user.create! valid_attributes
+    end
+
+    descirbe "with successful update" do
+      let :update_attributes do
+        {
+          name: 'changename'
+        }
+      end
+
+      before do 
+        put :update, id: @user.id, user: update_attributes
+      end
+
+      it "should update the users' data" do
+        expect(@user.reload.name).to eq('changename')
+      end
+
+      it "should redirect to '#'" do
+        expect(response).to render_template '#'
+      end
+    end
+
+    describe "with unsuccesful update" do
+      let(:invalid_update_attributes) { name: '' }
+      before do 
+        put :update, id: @user.id, user: update_attributes
+      end
+    end
+
+
+
+
+
+
+
+  end
+
+
+
  
 end
