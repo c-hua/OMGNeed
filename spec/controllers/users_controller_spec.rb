@@ -133,9 +133,13 @@ describe UsersController do
     end
 
     describe "with unsuccesful update" do
-      let(:invalid_update_attributes) { name: '' }
+       let :invalid_update_attributes do
+        {
+          name: 'changename'
+        }
+      end
       before do 
-        put :update, id: @user.id, user: update_attributes
+        put :update, id: @user.id, user: invalid_update_attributes
       end
     end
 
