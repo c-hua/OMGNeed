@@ -14,6 +14,7 @@ describe User do
   it { should respond_to(:password_digest)}
   it { should respond_to(:password)}
   it { should respond_to(:password_confirmation)}
+  xit { should respond_to(:lists)}
 
   it { should be_valid }
 
@@ -33,10 +34,29 @@ describe User do
   		it { should_not be_valid }
   end
 
-  describe "with empty password" do
-  		before do
-        @user = User.new(username: "username", name: "Example User", email: "user@example.com", password: "", password_confirmation: "")
+  describe "with valid email" do
+      it "should be valid" do
+      valid_addresses = %w[user@user.com THE_user@some.com user@org.or.com]
+      valid_addresses.each do |v_address|
+        @user.email = v_address
+        @user.should be_valid
       end
+    end
+  end
+
+
+    describe "with invalid email" do
+      it "should not be valid" do
+      invalid_addresses = %w[user@user THE_user@some,com userorg.com]
+      invalid_addresses.each do |in_address|
+        @user.email = in_address
+        @user.should_not be_valid
+      end
+    end
+  end
+
+  describe "with empty password" do
+  		before { @user.password = @user.password_confirmation = nil }
       it { should_not be_valid }
   end
 
@@ -48,9 +68,7 @@ describe User do
 
 
   describe "with empty password confirmation" do
-      before do
-        @user = User.new(username: "username", name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "")
-      end
+     before { @user.password_confirmation = nil }
       it { should_not be_valid }
   end
 
@@ -62,31 +80,13 @@ describe User do
   describe "uniqueness of email address" do
       before do
         @user.save
-        @user2 = User.new(username: "username", name: "Example User", email: "test@sample.com", password: "foobar", password_confirmation: "foobar")
+        @user2 = @user.dup
+        @user2.email = "test@sample.com"
       end
         it "should not be valid" do
           expect(@user2).to_not be_valid
         end
     end
-
-  # describe "with invalid email" do
-  # 	it "should be invalid" do
-  # 		@user.email = "abc@abccom"
-  # 		expect(@user).to_not be_valid
-  # 	end
-  # 	it "should be invalid" do
-  # 		@user.email = "abcatabc.com"
-  # 		expect(@user).to_not be_valid
-  # 	end
-  # 	it "should be invalid" do
-  # 		@user.email = "abc@@abc.com"
-  # 		expect(@user).to_not be_valid
-  # 	end
-  # 	it "should be invalid" do
-  # 		@user.email = "abc @abc.com"
-  # 		expect(@user).to_not be_valid
-  # 	end
-  # end
 
 
 

@@ -71,4 +71,23 @@ describe UsersController do
     end
   end
  
+ describe "Post create with valid attributes" do
+
+    it "should save the user to users" do
+      expect do 
+        post :create, user: valid_attributes
+      end.to change(User, :count).by(1)
+
+    end
+
+    xit "should redirect to newsfeed page" do
+    end 
+
+    it "should set a current user status" do
+      expect(assigns(:current_user)).to eq()
+    end
+ end
+
+
+
 end
