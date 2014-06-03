@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+  #pending for redirect to user create, update, and delete
 describe UsersController do
   let :valid_attributes do
    { username: 'sample',
@@ -60,8 +60,6 @@ describe UsersController do
     before { get :new }
     it "should render the new template" do
       expect(response).to render_template :new
-
-
     end
     it "should succeed" do
       expect(response).to be_success
@@ -70,23 +68,103 @@ describe UsersController do
       expect(assigns(:user)).to be_a_new(User)
     end
   end
- 
- describe "Post create with valid attributes" do
 
-    it "should save the user to users" do
-      expect do 
-        post :create, user: valid_attributes
-      end.to change(User, :count).by(1)
 
+  describe "POST create" do
+    describe "with valid attribute" do 
+      it "should save the user to the database" do
+        expect do
+          post :create, user: valid_attributes
+        end.to change(User,:count).by(1)
+      end
+
+      xit "should redirect user to '#'" do
+        expect(response).to render_template '#'
+      end
     end
 
-    xit "should redirect to newsfeed page" do
-    end 
 
-    it "should set a current user status" do
-      expect(assigns(:current_user)).to eq()
+    describe "with invalid attribute" do 
+      let :invalid_attributes do
+       { username: nil,
+        name: nil,
+        email: nil,
+        password: nil,
+        password_confirmation: nil }
+      end
+
+      it "should not save the user to the database" do
+        expect do
+          post :create, user: invalid_attributes
+        end.to_not change(User,:count).by(1)
+      end
+
+      it "should render the new template" do
+        expect(response).to render_template :new
+      end
     end
- end
+  end
+
+  describe "Put update" do
+    before do
+      @user = User.create! valid_attributes
+    end
+
+    describe "with successful update" do
+      let :update_attributes do
+        {
+          name: 'changename'
+        }
+      end
+
+      before do 
+        patch :update, id: @user.id, user: update_attributes
+      end
+
+      it "should update the users' data" do
+        expect(@user.reload.name).to eq('changename')
+      end
+
+      xit "should redirect to '#'" do
+        expect(response).to render_template '#'
+      end
+    end
+
+    describe "with unsuccesful update" do
+       let :invalid_update_attributes do
+        {
+          name: ''
+        }
+      end
+      before do 
+        put :update, id: @user.id, user: invalid_update_attributes
+      end
+      it "should not update the user name" do
+        expect(@user.name).to eq('user')
+      end
+      it "should render the edit template" do
+        expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe "Delete destroy" do
+    before { @user = User.create! valid_attributes }
+    it "should delete the record from database" do
+      expect do
+        delete :destroy, id: @user.id
+      end.to change(User, :count).by(-1)
+    end
+
+    xit "should redirect to '#'" do
+      expect(response).to render_template "#"
+    end
+  end
+
+
+
+
+
 
 
 
