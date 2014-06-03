@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-#validate email format 
+#relationship between user and the lisyt still pending 
 
 
 describe User do
