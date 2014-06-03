@@ -84,25 +84,25 @@ describe UsersController do
     end
 
 
-  #   describe "with invalid attribute" do 
-  #     let :invalid_attributes do
-  #      { username: nil,
-  #       name: nil,
-  #       email: nil,
-  #       password: nil,
-  #       password_confirmation: nil }
-  #     end
+    describe "with invalid attribute" do 
+      let :invalid_attributes do
+       { username: nil,
+        name: nil,
+        email: nil,
+        password: nil,
+        password_confirmation: nil }
+      end
 
-  #     it "should not save the user to the database" do
-  #       expect do
-  #         post :create, user: invalid_attributes
-  #       end.to_not change(User,:count).by(1)
-  #     end
+      it "should not save the user to the database" do
+        expect do
+          post :create, user: invalid_attributes
+        end.to_not change(User,:count).by(1)
+      end
 
-  #     it "should render the new template" do
-  #       expect(response).to render_template :new
-  #     end
-  #   end
+      it "should render the new template" do
+        expect(response).to render_template :new
+      end
+    end
   end
 
   describe "Put update" do
@@ -118,7 +118,7 @@ describe UsersController do
       end
 
       before do 
-        put :update, id: @user.id, user: update_attributes
+        patch :update, id: @user.id, user: update_attributes
       end
 
       it "should update the users' data" do
