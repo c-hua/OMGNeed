@@ -14,7 +14,7 @@ describe User do
   it { should respond_to(:password_digest)}
   it { should respond_to(:password)}
   it { should respond_to(:password_confirmation)}
-  xit { should respond_to(:lists)}
+  it { should respond_to(:lists)}
 
   it { should be_valid }
 

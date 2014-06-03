@@ -1,10 +1,19 @@
 class UsersController < ApplicationController
+
+  def news_feed
+    @imports = Product.party(params[:limit], params[:category], params[:search])
+    @user = User.find(params[:user_id])
+    @lists = List.where(user_id: @user.id)
+    #<%= link_to 'add product', pages_path(:page => {:list_id => @list.id, :url => p["name"]}), :method => :post %>
+  end
+
   def index
     @users = User.all
   end
 
   def show
   	@user = User.find(params[:id])
+    @lists = List.where(user_id: @user.id)
   end
 
   def edit
