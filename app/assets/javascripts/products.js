@@ -1,14 +1,4 @@
-
-
-
- // $(function(){ $(document).foundation(); });
-
- // $(function() {
- //    $( ".off-canvas-list" ).sortable();
- //    $( ".off-canvas-list" ).disableSelection();
- //  });
-
-var productApp = angular.module('product-app', ['ngResource']).config(
+Products = angular.module('product-app', ['ngResource', 'mgcrea.ngStrap', 'ngAnimate']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
     var defaults = $httpProvider.defaults.headers;
@@ -19,13 +9,13 @@ var productApp = angular.module('product-app', ['ngResource']).config(
     defaults.common['Accept'] = 'application/json';
 }]);
 
-productApp.factory('Product', ['$resource', function($resource) {
+Products.factory('Product', ['$resource', function($resource) {
   return $resource('/products/:id',
      {id: '@id'},
      {update: { method: 'PATCH'}});
 }]);
 
-productApp.controller('ProductCtrl', ['$scope', 'Yogurt', function($scope, Product) {
+Products.controller('ProductCtrl', ['$scope', 'Product', function($scope, Product) {
     $scope.products= [];
 
     $scope.newProduct = new Product();
@@ -33,6 +23,36 @@ productApp.controller('ProductCtrl', ['$scope', 'Yogurt', function($scope, Produ
     Product.query(function(products) {
       $scope.products = products;
    });
+
+    $scope.button = {
+  "toggle": false,
+  "checkbox": {
+    "left": false,
+    "middle": true,
+    "right": true
+  },
+  "radio": 0
+};
+  
+    $scope.leftAside = {
+      "body": "hi"
+    };
+
+    $scope.selectedState = "";
+    $scope.states = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
+
+
+    $scope.popover = {
+      "title": "Title",
+      "content": "Hello Popover<br />This is a multiline message!"
+    };
+
+    $scope.modal = {
+      "title": "Title",
+      "content": "Hello Modal<br />This is a multiline message!"
+    };
+
+  
 
     $scope.saveProduct = function () {
       $scope.newProduct.$save(function(product) {
