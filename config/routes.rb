@@ -1,5 +1,6 @@
 Omgneed::Application.routes.draw do
   
+  get "static/index"
   resources :users
   resources :users do
     member do

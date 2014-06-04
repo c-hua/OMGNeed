@@ -1,2 +1,39 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div ng-app="yogurt-app" class="container">
+  <h1>Yogurts</h1>
+
+  <div ng-controller="YogurtCtrl">
+
+     <div class="form-group">
+
+        <input ng-model="searchYogurt" type="text" class="form-control">
+          {{ searchYogurt}}
+      </div>
+
+    <table class="table">
+      <tbody>
+   
+      <tr ng-repeat="yogurt in yogurts | filter:searchYogurt" class="list-group-item">
+        {{yogurt.quantity}} oz of {{yogurt.flavor}} yogurt with {{yogurt.topping}}
+        <div ng-show="yogurt.details">
+          <dl>
+            <dt> Quantity: </dt>
+            <dt> {{yogurt.quantity}} </dt>
+            <dt> Topping: </dt>
+            <dt> {{yogurt.topping}} </dt>
+            <dt> flavor: </dt>
+            <dt> {{yogurt.flavor}} </dt>
+      </tr>
+    </ul>
+
+    <h3>New Yogurt:</h3>
+    <form ng-submit="saveYogurt();" class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input ng-model="newYogurt.quantity" name="quantity" class="form-control">
+      <label for="flavor">Flavor:</label>
+      <input ng-model="newYogurt.flavor" name="flavor" class="form-control">
+      <label for="topping">Topping:</label>
+      <input ng-model="newYogurt.topping" name="topping" class="form-control">
+      <input type="submit" value="Add New Record!" class="btn btn-primary">
+    </form>
+  </div>
+</div>
