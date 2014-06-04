@@ -85,7 +85,7 @@
         <tr ng-repeat="product in products | filter:searchProduct" >
          <td>
             <div ng-hide="product.editing">
-            {{yogurt.quantity}} oz of {{yogurt.flavor}} yogurt with {{yogurt.topping}}
+            {{product.name}}
             </div>
             <form ng-show="product.editing" ng-submit="updateProduct(product);" class="form-group">
               <label for="quantity">Quantity:</label>
