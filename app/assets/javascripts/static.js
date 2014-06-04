@@ -1,4 +1,4 @@
-var yogurtApp = angular.module('yogurt-app', ['ngResource']).config(
+var productApp = angular.module('product-app', ['ngResource']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
     var defaults = $httpProvider.defaults.headers;
@@ -9,38 +9,60 @@ var yogurtApp = angular.module('yogurt-app', ['ngResource']).config(
     defaults.common['Accept'] = 'application/json';
 }]);
 
-yogurtApp.factory('Yogurt', ['$resource', function($resource) {
-  return $resource('/yogurts/:id',
+productApp.factory('Product', ['$resource', function($resource) {
+  return $resource('/products/:id',
      {id: '@id'},
      {update: { method: 'PATCH'}});
 }]);
 
-yogurtApp.controller('YogurtCtrl', ['$scope', 'Yogurt', function($scope, Yogurt) {
-    $scope.yogurts= [];
+productApp.controller('ProductCtrl', ['$scope', 'Yogurt', function($scope, Product) {
+    $scope.products= [];
 
-    $scope.newYogurt = new Yogurt();
+    $scope.newProduct = new Product();
 
-    Yogurt.query(function(yogurts) {
-      $scope.yogurts = yogurts;
-    });
+    Product.query(function(products) {
+      $scope.products = products;
+   });
 
-    $scope.saveYogurt = function() {
-      $scope.newYogurt.$save(function(yogurt) {
-        $scope.yogurts.push(yogurt);
-        $scope.newYogurt = new Yogurt();
+    $scope.saveProduct = function () {
+      $scope.newProduct.$save(function(product) {
+        $scope.products.push(product)
+        $scope.newProduct = new Product();
       });
     }
 
-    $scope.deleteYogurt = function(index,yogurt) {
-      yogurt.$delete(function() {
-        $scope.yogurts.splice(index, :1);
-
-      }
-      )
-
-    $scope.showYogurt = function(yogurt) {
-      yogurt.details = true;
+    $scope.deleteProduct = function (product) {
+      product.$delete(function() {
+        position = $scope.products.indexOf(product);
+        $scope.products.splice(position, 1);
+      }, function(errors) {
+        $scope.errors = errors.data
+      });
     }
 
+    $scope.showProduct = function(product) {
+      product.details = true;
+      product.editing = false;
+    }
+
+    $scope.hideProduct = function(product) {
+      product.details = false;
+    }
+
+    $scope.editProduct = function(product) {
+      product.editing = true;
+      product.details = false;
+    }
+
+    $scope.updateProduct = function(product) {
+      product.$update(function() {
+        product.editing = false;
+      }, function(errors) {
+        $scope.errors = errors.data
+      });
+    }
+
+    $scope.clearErrors = function() {
+      $scope.errors = null;
     }
 }])

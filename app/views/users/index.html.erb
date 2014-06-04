@@ -1,38 +1,35 @@
-<div ng-app="yogurt-app" class="container">
-  <h1>Yogurts</h1>
+<div ng-app="product-app" class="container">
+  <h1>Products</h1>
 
-  <div ng-controller="YogurtCtrl">
+  <div ng-controller="ProductCtrl">
 
      <div class="form-group">
 
-        <input ng-model="searchYogurt" type="text" class="form-control">
-          {{ searchYogurt}}
+        <input ng-model="searchProduct" type="text" class="form-control">
+          {{ searchProduct}}
       </div>
 
     <table class="table">
       <tbody>
    
-      <tr ng-repeat="yogurt in yogurts | filter:searchYogurt" class="list-group-item">
-        {{yogurt.quantity}} oz of {{yogurt.flavor}} yogurt with {{yogurt.topping}}
-        <div ng-show="yogurt.details">
+      <tr ng-repeat="product in products | filter:searchProduct" class="list-group-item">
+        {{product.name}}
+        <div ng-show="product.details">
           <dl>
-            <dt> Quantity: </dt>
-            <dt> {{yogurt.quantity}} </dt>
-            <dt> Topping: </dt>
-            <dt> {{yogurt.topping}} </dt>
-            <dt> flavor: </dt>
-            <dt> {{yogurt.flavor}} </dt>
+            <dt> Name: </dt>
+            <dt> {{product.name}} </dt>
+  
       </tr>
     </ul>
 
-    <h3>New Yogurt:</h3>
-    <form ng-submit="saveYogurt();" class="form-group">
+    <h3>New Product:</h3>
+    <form ng-submit="saveProduct();" class="form-group">
       <label for="quantity">Quantity:</label>
-      <input ng-model="newYogurt.quantity" name="quantity" class="form-control">
+      <input ng-model="newProduct.name" name="name" class="form-control">
       <label for="flavor">Flavor:</label>
-      <input ng-model="newYogurt.flavor" name="flavor" class="form-control">
+      <input ng-model="newProduct.flavor" name="flavor" class="form-control">
       <label for="topping">Topping:</label>
-      <input ng-model="newYogurt.topping" name="topping" class="form-control">
+      <input ng-model="newProduct.topping" name="topping" class="form-control">
       <input type="submit" value="Add New Record!" class="btn btn-primary">
     </form>
   </div>

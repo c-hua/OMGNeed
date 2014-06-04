@@ -54,6 +54,7 @@ gem 'foundation-rails'
 gem 'jquery-ui-rails'
 
 gem 'active_model_serializers'
+gem 'angularjs-rails'
 
 
 
