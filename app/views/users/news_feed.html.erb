@@ -2,37 +2,19 @@
 			<div  x-ng-controller='UserCtrl'>
 
 
-				<h1>{{users}}</h1>
+				<h4>{{users[0].name}}</h4>
 
-				<dl class="accordion" data-accordion>
-					<div>
-					<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-
-					<% @imports.each do |p| %>
-						<li>
-							<dd>
-						    <a href="#product<%= p['id'] %>"><center><%= image_tag p['image']['sizes']['IPhone']['url'] %></center></a>
-						    <div id="product<%= p['id'] %>" class="content">
-						      <h5><%= p['name'] %></h5>
-									<p>Original Price: <%= p['priceLabel'] %><br>
-									<p>Sale Price: <%= p['salePriceLabel'] %><br>
-									<p><%= percent_off((p['priceLabel'].gsub(/[^\d\.]/, '').to_f), (p['salePriceLabel'].gsub(/[^\d\.]/, '').to_f)).round %>% Savings<br><br>
-									<h5><center><%= link_to "GO!", p['clickUrl'] %></center></h5>	
-										
-									
-										<a href="#" data-reveal-id="p<%=p['id']%>">Will be a double tap</a>
-
-										<div id="p<%=p['id']%>" class="reveal-modal small" data-reveal>
-										  <h2><%= p['name']%></h2>
-										  
-										  
-										</div>
-						    </div>
-					  	</dd>
-						</li>
-					<% end %>
-
-					</ul>
+					<div ng-repeat="list in users[0].lists track by $index">{{list.name}}
+						<div ng-repeat="product in list.products">{{product.name}}</div>
 					</div>
-				</dl>
+				
+				<input ng-model="searchProduct" type="text" class="form-control">
+
+				<div ng-repeat="product in products | filter:searchProduct" >
+					<img src="{{product.image.sizes.IPhone.url}}" >
+
+				</div>
+		
+			
+				
 			</div>
