@@ -32,11 +32,10 @@ class UsersController < ApplicationController
 
 
   def create
-    @user = User.new(params.require(:user).permit(user_params))
+    @user = User.new(user_params)
       if @user.save
-        
         respond_to do |format|
-          format.html { redirect_to "#"}
+          format.html { redirect_to (news_feed_user_path(@user))}
           format.json { render json: @user, status: :created}
         end
       else
