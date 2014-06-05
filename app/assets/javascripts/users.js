@@ -19,60 +19,63 @@ var productApp = angular.module('product-app', ['ngResource']).config(
     defaults.common['Accept'] = 'application/json';
 }]);
 
-productApp.factory('Product', ['$resource', function($resource) {
-  return $resource('/products/:id',
+productApp.factory('User', ['$resource', function($resource) {
+  return $resource('/users/:id',
      {id: '@id'},
      {update: { method: 'PATCH'}});
 }]);
 
-productApp.controller('ProductCtrl', ['$scope', 'Yogurt', function($scope, Product) {
-    $scope.products= [];
+productApp.controller('UserCtrl', ['$scope', 'User', function($scope, User) {
+    $scope.user= [];
 
-    $scope.newProduct = new Product();
+    // 
 
-    Product.query(function(products) {
-      $scope.products = products;
+    User.query(function(user) {
+      $scope.user = user;
    });
 
-    $scope.saveProduct = function () {
-      $scope.newProduct.$save(function(product) {
-        $scope.products.push(product)
-        $scope.newProduct = new Product();
-      });
-    }
 
-    $scope.deleteProduct = function (product) {
-      product.$delete(function() {
-        position = $scope.products.indexOf(product);
-        $scope.products.splice(position, 1);
-      }, function(errors) {
-        $scope.errors = errors.data
-      });
-    }
 
-    $scope.showProduct = function(product) {
-      product.details = true;
-      product.editing = false;
-    }
+    // $scope.newProduct = new Product();
+    // $scope.saveProduct = function () {
+    //   $scope.newProduct.$save(function(product) {
+    //     $scope.products.push(product)
+    //     $scope.newProduct = new Product();
+    //   });
+    // }
 
-    $scope.hideProduct = function(product) {
-      product.details = false;
-    }
+    // $scope.deleteProduct = function (product) {
+    //   product.$delete(function() {
+    //     position = $scope.products.indexOf(product);
+    //     $scope.products.splice(position, 1);
+    //   }, function(errors) {
+    //     $scope.errors = errors.data
+    //   });
+    // }
 
-    $scope.editProduct = function(product) {
-      product.editing = true;
-      product.details = false;
-    }
+    // $scope.showProduct = function(product) {
+    //   product.details = true;
+    //   product.editing = false;
+    // }
 
-    $scope.updateProduct = function(product) {
-      product.$update(function() {
-        product.editing = false;
-      }, function(errors) {
-        $scope.errors = errors.data
-      });
-    }
+    // $scope.hideProduct = function(product) {
+    //   product.details = false;
+    // }
 
-    $scope.clearErrors = function() {
-      $scope.errors = null;
-    }
+    // $scope.editProduct = function(product) {
+    //   product.editing = true;
+    //   product.details = false;
+    // }
+
+    // $scope.updateProduct = function(product) {
+    //   product.$update(function() {
+    //     product.editing = false;
+    //   }, function(errors) {
+    //     $scope.errors = errors.data
+    //   });
+    // }
+
+    // $scope.clearErrors = function() {
+    //   $scope.errors = null;
+    // }
 }])
