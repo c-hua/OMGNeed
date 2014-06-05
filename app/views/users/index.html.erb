@@ -2,35 +2,99 @@
   <h1>Products</h1>
 
   <div ng-controller="ProductCtrl">
+    <div ng-show="errors" class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" ng-click="clearErrors();" aria-hidden="true">&times;</button>
+      <ul>
+        <li ng-repeat="(attribute, error) in errors">
+          {{attribute}} {{error.join(", ")}}
+        </li>
+      </ul>
+
+    </div>
+
+  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+  <button class='button' ng-click="addAlert()">Add Alert</button>
+
+
+
+ <p>
+    <a dropdown-toggle="#dropdown-example-1">Click me for a dropdown, yo!</a>
+  </p>
+  <ul id="dropdown-example-1" class="f-dropdown">
+    <li ng-repeat="choice in items">
+      <a>{{choice}}</a>
+    </li>
+  </ul>
+
+  <a class="button dropdown" dropdown-toggle="#dropdown-example-2">Dropdowns can also have links!</a>
+  <ul id="dropdown-example-2" class="f-dropdown">
+    <li ng-repeat="(label, url) in linkItems">
+      <a href="{{url}}" target="_blank">{{label}}</a>
+    </li>
+  </ul>
+
+  <a class="button split">
+    Split Button
+    <span dropdown-toggle="#dropdown-example-3"></span>
+  </a>
+  <ul id="dropdown-example-3" class="f-dropdown">
+    <li ng-repeat="choice in items">
+      <a>{{choice}}</a>
+    </li>
+  </ul>
+
+
 
      <div class="form-group">
 
         <input ng-model="searchProduct" type="text" class="form-control">
-          {{ searchProduct}}
+
       </div>
 
-    <table class="table">
+    <table class="table table-bordered">
       <tbody>
-   
-      <tr ng-repeat="product in products | filter:searchProduct" class="list-group-item">
-        {{product.name}}
-        <div ng-show="product.details">
-          <dl>
-            <dt> Name: </dt>
-            <dt> {{product.name}} </dt>
-  
-      </tr>
-    </ul>
+        <tr ng-repeat="product in products | filter:searchProduct" >
+         <td>
+            <div ng-hide="product.editing">
+            {{product.name}}
+            </div>
+            <form ng-show="product.editing" ng-submit="updateProduct(product);" class="form-group">
+              <label for="quantity">Quantity:</label>
+              <input ng-model="product.name" name="quantity" class="form-control">
+       
+              <input type="submit" value="Update!" class="btn btn-primary">
+            </form>
+
+            <div ng-show="product.details">
+              <dl>
+                 <dt>Product Name</dt>
+                 <dd>{{product.name}}</dd>
+                
+
+                 <dd>
+                  <ul>
+                  
+                  </ul>
+                </dd>
+              </dl>
+            </div>
+          </td>
+          <td><span ng-hide="product.details"><a ng-click="showProduct(product);" class="btn btn-info">show</a></span>
+          <span ng-show="product.details"><a ng-click="hideProduct(product);" class="btn btn-info">hide</a></span>
+          </td>
+          <td><a ng-click="editProduct(product);" class="btn btn-info">edit</a></td>
+          <td><a ng-click="deleteProduct(product);" class="btn btn-info">delete</a></td>
+        </tr>
+      </tbody>
+    </table>
 
     <h3>New Product:</h3>
     <form ng-submit="saveProduct();" class="form-group">
       <label for="quantity">Quantity:</label>
-      <input ng-model="newProduct.name" name="name" class="form-control">
-      <label for="flavor">Flavor:</label>
-      <input ng-model="newProduct.flavor" name="flavor" class="form-control">
-      <label for="topping">Topping:</label>
-      <input ng-model="newProduct.topping" name="topping" class="form-control">
-      <input type="submit" value="Add New Record!" class="btn btn-primary">
+      <input ng-model="newProduct.name" name="quantity" class="form-control">
+  
+      <input type="submit" value="Add New Product!" class="btn btn-primary">
     </form>
+
   </div>
 </div>
