@@ -13,6 +13,15 @@
     </div>
 
 
+    <div ng-controller="AlertDemoCtrl">
+  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+  <button class='button' ng-click="addAlert()">Add Alert</button>
+</div>
+
+
+
+
+
 
       <button type="button" class="btn btn-lg btn-primary" bs-aside="{title: 'GA sidebar', content: 'GA is cool'}">Click to toggle aside
       <br>
