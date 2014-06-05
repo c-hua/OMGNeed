@@ -1,8 +1,18 @@
 				
+			
+			Name: <%= @user.name %>
+			<% @lists.each do |l| %>
+			<%= l.name %>
+			<% end %>
+			
+
+
+
+
 			<div  x-ng-controller='UserCtrl'>
 
 
-				<h4>{{users[0].name}}</h4>
+				
 
 					<div ng-repeat="list in users[0].lists track by $index">{{list.name}}
 						<div ng-repeat="product in list.products">{{product.name}}</div>

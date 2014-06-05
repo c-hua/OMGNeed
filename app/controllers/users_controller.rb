@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def news_feed
     
     @user = User.find(params[:id])
+    @lists = @user.lists.all
     respond_with @user
     #<%= link_to 'add product', pages_path(:page => {:list_id => @list.id, :url => p["name"]}), :method => :post %>
   end
@@ -33,6 +34,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params.require(:user).permit(user_params))
       if @user.save
+        
         respond_to do |format|
           format.html { redirect_to "#"}
           format.json { render json: @user, status: :created}
