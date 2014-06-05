@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   respond_to :json, :html
 
   def news_feed
-    @imports = Product.party(params[:limit], params[:category], params[:search])
+    
     @user = User.find(params[:id])
     respond_with @user
     #<%= link_to 'add product', pages_path(:page => {:list_id => @list.id, :url => p["name"]}), :method => :post %>

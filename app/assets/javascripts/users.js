@@ -10,19 +10,31 @@ var omgneedApp = angular.module('omgneed-app', ['ngResource']).config(
 }]);
 
 omgneedApp.factory('User', ['$resource', function($resource) {
-  return $resource('/users/:id/',
+  return $resource('/users/:id',
      {id: '@id'},
      {update: { method: 'PATCH'}});
 }]);
 
-omgneedApp.controller('UserCtrl', ['$scope', 'User', function($scope, User) {
+omgneedApp.factory('Products', ['$resource', function($resource) {
+  return $resource('/products/:id',
+     {id: '@id'},
+     {update: { method: 'PATCH'}});
+}]);
 
-  $scope.users= [];
+omgneedApp.controller('UserCtrl', ['$scope', 'User', 'Products', function($scope, User, Products) {
+
+  $scope.users = [];
+  $scope.products = [];
 
 User.query(function(users) {
       $scope.users = users;
    });
 
+Products.query(function(products){
+  $scope.products = products;
+
+});
 
 
-}])
+
+}]);
