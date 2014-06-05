@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password]) == @user
         session[:remember_token] = @user.id
         @current_user = @user
-        redirect_to(root_path)
+        redirect_to(news_feed_user_path(@current_user))
         flash[:success] ='You successfully logged in'
     else
         flash[:warning] ='Invalid email/password combination'

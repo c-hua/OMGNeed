@@ -10,7 +10,7 @@ var omgneedApp = angular.module('omgneed-app', ['ngResource']).config(
 }]);
 
 omgneedApp.factory('User', ['$resource', function($resource) {
-  return $resource('/users/:id',
+  return $resource('/users/:id/news_feed',
      {id: '@id'},
      {update: { method: 'PATCH'}});
 }]);
