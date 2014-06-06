@@ -1,7 +1,7 @@
 				
 			
-			Name: <%= @user.name %>
-			<% @lists.each do |l| %>
+			Name: <%= current_user.name %>
+			<% current_user.lists.each do |l| %>
 			<%= l.name %>
 			<% end %>
 			
@@ -9,14 +9,22 @@
 
 
 
-			<div  x-ng-controller='UserCtrl'>
+			<div  x-ng-controller='ListsCtrl'>
+
+				<form ng-submit="saveList();">
 
 
+			      <label for="quantity">New List Name:</label>
+			      <input ng-model="newList.name" name="quantity" >
+			      
+			      
+			      <input type="submit" value="Add New List!">
+    			</form>
 				
 
-					<div ng-repeat="list in users[0].lists track by $index">{{list.name}}
-						<div ng-repeat="product in list.products">{{product.name}}</div>
-					</div>
+					<div ng-repeat="list in lists track by $index">{{list.name}}
+				<!-- 		<div ng-repeat="product in list.products">{{product.name}}</div>
+					</div> -->
 				
 				<input ng-model="searchProduct" type="text" class="form-control">
 
