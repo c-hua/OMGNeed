@@ -163,4 +163,5 @@ DEPENDENCIES
   sdoc
   therubyracer
   twitter-bootstrap-rails
+
   uglifier (>= 1.3.0)

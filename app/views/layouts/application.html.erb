@@ -7,7 +7,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -22,14 +22,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Hello, I'm Alfie. </a>
+      <a class="navbar-brand" href="#">OMGNeed </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to "View Tasks", users_path %></li>
-        <li><%= link_to "New Task", users_path %></li>
+        <li><%= link_to "View Lists", users_path %></li>
+        <li><%= link_to "New List", users_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>

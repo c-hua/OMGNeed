@@ -1,4 +1,4 @@
-var omgneedApp = angular.module('omgneed-app', ['ngResource',  'mgcrea.ngStrap', 'ngAnimate']).config(
+var omgneedApp = angular.module('omgneed-app', ['ngResource', 'ngSanitize', 'mgcrea.ngStrap', 'ngAnimate']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
     var defaults = $httpProvider.defaults.headers;
@@ -7,7 +7,12 @@ var omgneedApp = angular.module('omgneed-app', ['ngResource',  'mgcrea.ngStrap',
     defaults.patch = defaults.patch || {};
     defaults.patch['Content-Type'] = 'application/json';
     defaults.common['Accept'] = 'application/json';
-}]);
+}]).config(function($asideProvider) {
+  angular.extend($asideProvider.defaults, {
+    container: 'body',
+    html: true
+  });
+});
 
 omgneedApp.factory('User', ['$resource', function($resource) {
   return $resource('/users/:id',
@@ -26,6 +31,9 @@ omgneedApp.factory('List', ['$resource', function($resource) {
      {id: '@id'},
      {update: { method: 'PATCH'}});
 }]);
+
+
+
 
 omgneedApp.controller('ListsCtrl', ['$scope', 'User', 'Products', 'List', function($scope, User, Products, List) {
 
@@ -87,7 +95,7 @@ $scope.saveProducts = function () {
       });
     };
 
-$scope.deleteProducts= function (products) {
+    $scope.deleteProducts= function (products) {
       products.$delete(function() {
         position = $scope.list.indexOf(products);
         $scope.products.splice(position, 1);
@@ -122,4 +130,15 @@ $scope.deleteProducts= function (products) {
       $scope.errors = null;
     };
 
+    $scope.aside = {
+      "title": "Title",
+      "content": "Hello Aside<br />This is a multiline message!"
+    };
+
+    $scope.show = false;
+
+
 }]);
+
+
+
