@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  #logout
+  #logout, assign the root path
   def destroy
   session.delete(:remember_token)
   redirect_to root_path

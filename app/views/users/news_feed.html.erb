@@ -1,9 +1,5 @@
 				
-			
-			Name: <%= current_user.name %>
-			<% current_user.lists.each do |l| %>
-			<%= l.name %>
-			<% end %>
+
 			
 
 
@@ -22,16 +18,16 @@
     			</form>
 				
 
-					<div ng-repeat="list in lists track by $index">{{list.name}}
+					<div ng-repeat="list in lists track by $index">{{list.name}}<br />
 				<!-- 		<div ng-repeat="product in list.products">{{product.name}}</div>
 					</div> -->
 				
-				<input ng-model="searchProduct" type="text" class="form-control">
+				<!-- <input ng-model="searchProduct" type="text" class="form-control">
 
 				<div ng-repeat="product in products | filter:searchProduct" >
 					<img src="{{product.image.sizes.IPhone.url}}" >
 
-				</div>
+				</div> -->
 		
 			
 				

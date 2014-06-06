@@ -14,31 +14,30 @@ class ListsController < ApplicationController
 
   def new
   	@list = List.new
-
   end
 
 
 
   def create
     
-  	@list = current_user.lists.new(params.require(:list).permit.(:name))
+  	@list = current_user.lists.new(list_params)
       if @list.save
         respond_to do |format|
           format.html { redirect_to news_feed_users_path}
           format.json { render json: @list, status: :created}
         end
-      # else
-      #   respond_to do |format|
-      #     format.html { render 'new' }
-      #     format.json { render json: @list.errors, status: :unprocessable_entity}
-      #   end
+      else
+        respond_to do |format|
+          format.html { render 'new' }
+          format.json { render json: @list.errors, status: :unprocessable_entity}
+        end
       end
   end
 
   def update
-    if @list.update_attributes(params.require(:list).permit.(:name))
+    if @list.update_attributes(list_params)
        respond_to do |format|
-          format.html { redirect_to "#"}
+          format.html { redirect_to news_feed_users_path}
           format.json { render nothing: true, status: :no_content}
         end
       else
