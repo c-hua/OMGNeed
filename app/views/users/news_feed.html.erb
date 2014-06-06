@@ -1,30 +1,9 @@
 				
-<div class="off-canvas-wrap" x-ng-controller='ListsCtrl'>
-    <div class="inner-wrap">
-        <nav class="tab-bar">
-            <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
-            </section>
+<div  x-ng-controller='ListsCtrl'>
 
-            <section class="middle tab-bar-section">
-                <h1 class="title">OffCanvas</h1>
-            </section>
 
-            <section class="right-small">
-                <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
-            </section>
 
-        </nav>
-
-        <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-                <li><a href="#">Left Sidebar</a></li>
-            </ul>
-        </aside>
-
-        <aside class="right-off-canvas-menu">
-            <ul class="off-canvas-list">
-               <li>
+<!--  -->
                	<form ng-submit="saveList();">
 						      <label for="quantity">New List Name:</label>
 						      <input ng-model="newList.name" name="quantity">
@@ -32,13 +11,14 @@
 			    			</form>
 			    		</li>
 						
-
+           
 							
-							<li ng-repeat="list in lists track by $index">{{list.name}}<br />
+							<li ng-repeat="list in lists track by $index" >{{list.name}}<br />
 								<li ng-repeat="product in list.products">{{product.name}}</li>
 							</li>
 							
             </ul>
+
         </aside>
 
         <section class="main-section">
@@ -57,76 +37,11 @@
 
 						<p>Stuff at the bottom</p>
             </div>
+        </div>
         </section>
 
 
-
-     <div class="form-group">
-
-        <input ng-model="searchProducts" type="text" class="form-control">
-
-      </div>
-
-    <table class="table table-bordered">
-      <tbody>
-        <tr ng-repeat="product in products | filter:searchProduct" >
-         <td>
-            <div ng-hide="products.editing">
-            {{products.name}} {{products.price}} {{products.sale_price}} {{products_brand}}
-
-
-    
-            </div>
-            <form ng-show="product.editing" ng-submit="updateProduct(product);" class="form-group">
-              <label for="name">Name:</label>
-              <input ng-model="products.name" name="name" class="form-control">
-     
-              <input type="submit" value="Update!" class="btn btn-primary">
-            </form>
-
-            <div ng-show="product.details">
-              <dl>
-               {{products.name}} {{products.price}} {{products.sale_price}} {{products_brand}}
-
-                 <dt>Discount Coupons</dt>
-                 <dd>
-                  <ul>
-                    <li ng-repeat="coupon in yogurt.discount_coupons">
-                      Amount: ${{coupon.formatted_amount}}
-                    </li>
-                  </ul>
-                </dd>
-              </dl>
-            </div>
-          </td>
-          <td><span ng-hide="yogurt.details"><a ng-click="showYogurt(yogurt);" class="btn btn-info">show</a></span>
-          <span ng-show="yogurt.details"><a ng-click="hideYogurt(yogurt);" class="btn btn-info">hide</a></span>
-          </td>
-          <td><a ng-click="editYogurt(yogurt);" class="btn btn-info">edit</a></td>
-          <td><a ng-click="deleteYogurt(yogurt);" class="btn btn-info">delete</a></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3>New Yogurt:</h3>
-    <form ng-submit="saveYogurt();" class="form-group">
-      <label for="quantity">Quantity:</label>
-      <input ng-model="newYogurt.quantity" name="quantity" class="form-control">
-      <label for="flavor">Flavor:</label>
-      <input ng-model="newYogurt.flavor" name="flavor" class="form-control">
-      <label for="topping">Topping:</label>
-      <input ng-model="newYogurt.topping" name="topping" class="form-control">
-      <input type="submit" value="Add New Yogurt!" class="btn btn-primary">
-    </form>
-
-  </div>
-</div>
-
-        <a class="exit-off-canvas"></a>
-    </div>
-</div>
-			
-
+<!-- LINE THROUGH -->
 
 
 
