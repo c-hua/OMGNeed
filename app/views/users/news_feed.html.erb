@@ -29,10 +29,23 @@
 						
 							<input ng-model="searchProduct" type="text" class="form-control">
 							
-							<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-							 	<li x-ng-repeat="product in products | filter:searchProduct" >
-									<img src="{{product.image.sizes.IPhone.url}}">
-								</li>
+							<ul >
+							 	
+								
+
+    <div class="row">
+        <div x-ng-repeat="product in products | filter:searchProduct" class="col-md-3">            
+            <div class="thumbnail">
+                <div ng-show="show" class="caption">
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger" rel="tooltip" title="Zoom">Zoom</a>
+                    <a href="" class="label label-default" rel="tooltip" title="Download now">Download</a></p>
+                </div>
+                <img ng-mouseenter="show = true" ng-mouseleave="show=false" src="{{product.image.sizes.IPhone.url}}">
+            </div>
+      </div>
+							
 							</ul>
 
 						<p>Stuff at the bottom</p>
@@ -43,6 +56,65 @@
 
 <!-- LINE THROUGH -->
 
+
+
+<div class="container">
+  
+    <div class="row">
+        <div class="col-md-3">            
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger" rel="tooltip" title="Zoom">Zoom</a>
+                    <a href="" class="label label-default" rel="tooltip" title="Download now">Download</a></p>
+                </div>
+                <img src="http://resources.shopstyle.com/mim/89/d5/89d5438884f865e5fbd1505e7ea4af9b.jpg">
+            </div>
+      </div>
+      
+    <div class="row">
+        <div class="col-md-3">            
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger" rel="tooltip" title="Zoom">Zoom</a>
+                    <a href="" class="label label-default" rel="tooltip" title="Download now">Download</a></p>
+                </div>
+                <img src="http://lorempixel.com/400/300/sports/2/" alt="...">
+            </div>
+      </div>
+
+    <div class="row">
+        <div class="col-md-3">            
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger" rel="tooltip" title="Zoom">Zoom</a>
+                    <a href="" class="label label-default" rel="tooltip" title="Download now">Download</a></p>
+                </div>
+                <img src="http://lorempixel.com/400/300/sports/3/" alt="...">
+            </div>
+      </div>
+
+    <div class="row">
+        <div class="col-md-3">            
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>Thumbnail Headline</h4>
+                    <p>short thumbnail description</p>
+                    <p><a href="" class="label label-danger" rel="tooltip" title="Zoom">Zoom</a>
+                    <a href="" class="label label-default" rel="tooltip" title="Download now">Download</a></p>
+                </div>
+                <img src="http://lorempixel.com/400/300/sports/4/" alt="...">
+            </div>
+      </div>        
+        
+  </div>
+  
+</div><!-- /.container --></div>
 
 
 		
