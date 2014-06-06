@@ -1,4 +1,4 @@
-var omgneedApp = angular.module('omgneed-app', ['ngResource']).config(
+var omgneedApp = angular.module('omgneed-app', ['ngResource', 'mm.foundation']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
     var defaults = $httpProvider.defaults.headers;

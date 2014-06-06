@@ -1,34 +1,70 @@
 				
+<div class="off-canvas-wrap" x-ng-controller='ListsCtrl'>
+    <div class="inner-wrap">
+        <nav class="tab-bar">
+            <section class="left-small">
+                <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+            </section>
 
+            <section class="middle tab-bar-section">
+                <h1 class="title">OffCanvas</h1>
+            </section>
+
+            <section class="right-small">
+                <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+            </section>
+
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><a href="#">Left Sidebar</a></li>
+            </ul>
+        </aside>
+
+        <aside class="right-off-canvas-menu">
+            <ul class="off-canvas-list">
+               <li>
+               	<form ng-submit="saveList();">
+						      <label for="quantity">New List Name:</label>
+						      <input ng-model="newList.name" name="quantity">
+						      <input type="submit" value="Add New List!">
+			    			</form>
+			    		</li>
+						
+
+							
+							<li ng-repeat="list in lists track by $index">{{list.name}}<br />
+								<li ng-repeat="product in list.products">{{product.name}}</li>
+							</li>
+							
+            </ul>
+        </aside>
+
+        <section class="main-section">
+            <div class="small-12 columns">
+
+
+							<br><br>
+						
+							<input ng-model="searchProduct" type="text" class="form-control">
+							
+							<ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+							 	<li x-ng-repeat="product in products | filter:searchProduct" >
+									<img src="{{product.image.sizes.IPhone.url}}">
+								</li>
+							</ul>
+
+						<p>Stuff at the bottom</p>
+            </div>
+        </section>
+
+        <a class="exit-off-canvas"></a>
+    </div>
+</div>
 			
 
 
 
 
-			<div  x-ng-controller='ListsCtrl'>
-
-				<form ng-submit="saveList();">
-
-
-			      <label for="quantity">New List Name:</label>
-			      <input ng-model="newList.name" name="quantity" >
-			      
-			      
-			      <input type="submit" value="Add New List!">
-    			</form>
-				
-
-					<div ng-repeat="list in lists track by $index">{{list.name}}<br />
-				<!-- 		<div ng-repeat="product in list.products">{{product.name}}</div>
-					</div> -->
-				
-				<!-- <input ng-model="searchProduct" type="text" class="form-control">
-
-				<div ng-repeat="product in products | filter:searchProduct" >
-					<img src="{{product.image.sizes.IPhone.url}}" >
-
-				</div> -->
 		
-			
-				
-			</div>
