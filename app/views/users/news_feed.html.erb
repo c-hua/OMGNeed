@@ -1,18 +1,30 @@
-<div class="container-fluid">
-  <div class="row">		
-    <div x-ng-controller='ListsCtrl'>
 
-  
+				
+<div  x-ng-controller='ListsCtrl'>
 
 
 
+<!--  -->
+               	<form ng-submit="saveList();">
+						      <label for="quantity">New List Name:</label>
+						      <input ng-model="newList.name" name="quantity">
+						      <input type="submit" value="Add New List!">
+			    			</form>
+			    		</li>
+						
+           
+							
+							<li ng-repeat="list in lists track by $index" >{{list.name}}<br />
+								<li ng-repeat="product in list.products">{{product.name}}</li>
+							</li>
+							
+            </ul>
 
-
+        </aside>
 
 
         <section class="main-section">
             <div class="small-12 columns">
-
 
 
 <button type="button" class="btn btn-lg btn-danger" data-remote="#testDiv" data-animation="am-slide-right" bs-aside="aside" data-container="body">Custom aside
@@ -134,6 +146,16 @@
     </div>
   </div>
 </div>
+
+						<p>Stuff at the bottom</p>
+            </div>
+        </div>
+        </section>
+
+
+<!-- LINE THROUGH -->
+
+
 
 
   		
