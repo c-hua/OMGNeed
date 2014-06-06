@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require angular
+//= require angular-strap
 //= require angular-animate
 //= require angular-resource
 //= require_tree .
