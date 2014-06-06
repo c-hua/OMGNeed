@@ -49,8 +49,6 @@ gem 'bcrypt-ruby'
 
 gem 'httparty'
 
-gem 'foundation-rails'
-
 gem 'jquery-ui-rails'
 
 gem 'active_model_serializers'

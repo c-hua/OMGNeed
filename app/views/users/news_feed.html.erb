@@ -59,6 +59,74 @@
             </div>
         </section>
 
+
+
+     <div class="form-group">
+
+        <input ng-model="searchProducts" type="text" class="form-control">
+
+      </div>
+
+    <table class="table table-bordered">
+      <tbody>
+        <tr ng-repeat="product in products | filter:searchProduct" >
+         <td>
+            <div ng-hide="yogurt.editing">
+            {{yogurt.quantity}} oz of {{yogurt.flavor}} yogurt with {{yogurt.topping}}
+            </div>
+            <form ng-show="yogurt.editing" ng-submit="updateYogurt(yogurt);" class="form-group">
+              <label for="quantity">Quantity:</label>
+              <input ng-model="yogurt.quantity" name="quantity" class="form-control">
+              <label for="flavor">Flavor:</label>
+              <input ng-model="yogurt.flavor" name="flavor" class="form-control">
+              <label for="topping">Topping:</label>
+              <input ng-model="yogurt.topping" name="topping" class="form-control">
+              <input type="submit" value="Update!" class="btn btn-primary">
+            </form>
+
+            <div ng-show="yogurt.details">
+              <dl>
+                 <dt>Quantity:</dt>
+                 <dd>{{yogurt.quantity}}</dd>
+                 <dt>Flavor:</dt>
+                 <dd>{{yogurt.flavor}}</dd>
+                 <dt>Topping:</dt>
+                 <dd>{{yogurt.topping}}</dd>
+
+                 <dt>Discount Coupons</dt>
+                 <dd>
+                  <ul>
+                    <li ng-repeat="coupon in yogurt.discount_coupons">
+                      Amount: ${{coupon.formatted_amount}}
+                    </li>
+                  </ul>
+                </dd>
+              </dl>
+            </div>
+          </td>
+          <td><span ng-hide="yogurt.details"><a ng-click="showYogurt(yogurt);" class="btn btn-info">show</a></span>
+          <span ng-show="yogurt.details"><a ng-click="hideYogurt(yogurt);" class="btn btn-info">hide</a></span>
+          </td>
+          <td><a ng-click="editYogurt(yogurt);" class="btn btn-info">edit</a></td>
+          <td><a ng-click="deleteYogurt(yogurt);" class="btn btn-info">delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>New Yogurt:</h3>
+    <form ng-submit="saveYogurt();" class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input ng-model="newYogurt.quantity" name="quantity" class="form-control">
+      <label for="flavor">Flavor:</label>
+      <input ng-model="newYogurt.flavor" name="flavor" class="form-control">
+      <label for="topping">Topping:</label>
+      <input ng-model="newYogurt.topping" name="topping" class="form-control">
+      <input type="submit" value="Add New Yogurt!" class="btn btn-primary">
+    </form>
+
+  </div>
+</div>
+
         <a class="exit-off-canvas"></a>
     </div>
 </div>
