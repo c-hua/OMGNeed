@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">		
+    <div x-ng-controller='ListsCtrl'>
+
+     
+
+                  
+
+                  <div ng-repeat="list in lists track by $index">{{list.name}}<br />
+                    <div ng-repeat="product in list.products">{{product.name}}</div>
+                  </div>
+
+
+        
+    </div>
+  </div>
+</div>
+
+  		

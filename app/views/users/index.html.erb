@@ -1,38 +1,155 @@
-<div class="off-canvas-wrap" ng-controller="ListsCtrl">
-    <div class="inner-wrap">
-        <nav class="tab-bar">
-            <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
-            </section>
+<div class="navbar-wrapper">
+  <div class="container">
+    <div class="navbar navbar-inverse navbar-static-top">
+      
+        <div class="navbar-header">
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+        <a class="navbar-brand" href="#">OMGNEED</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="http://www.bootply.com" target="ext">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
-            <section class="middle tab-bar-section">
-                <h1 class="title">OffCanvas</h1>
-            </section>
-
-            <section class="right-small">
-                <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
-            </section>
-
-        </nav>
-
-        <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-                <li><a href="#">Left Sidebar</a></li>
-            </ul>
-        </aside>
-        <aside class="right-off-canvas-menu">
-            <ul class="off-canvas-list">
-                <li><a href="#">Right Sidebar</a></li>
-            </ul>
-        </aside>
-        <section class="main-section">
-            <div class="small-12 columns">
-                <h1>How to use</h1>
-                <p>Just use the standard layout for an offcanvas page as documented in the <a href="http://foundation.zurb.com/docs/components/offcanvas.html">foundation docs</a></p>
-                <p>As long as you include mm.foundation.offcanvas it should simply work</p>
-            </div>
-        </section>
-
-        <a class="exit-off-canvas"></a>
     </div>
+  </div><!-- /container -->
+</div><!-- /navbar wrapper -->
+
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="/assets/example/bg_suburb.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>OMGNEED</h1>
+          <pthis is="" an="" example="" layout="" with="" carousel="" that="" uses="" the="" bootstrap="" 3="" styles.<="" small=""><p></p>
+          <p><a class="btn btn-lg btn-primary" href="http://getbootstrap.com">Learn More</a>
+        </p></pthis></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://lorempixel.com/1500/600/abstract/1" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Changes to the Grid</h1>
+          <p>omgneeeeeeeeeeed</p>
+          <p><a class="btn btn-large btn-primary" href="#">Learn more</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/1500X500" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Percentage-based sizing</h1>
+          <p>dividy 2</p>
+          <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>  
 </div>
+<!-- /.carousel -->
+
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="http://placehold.it/140x140">
+      <h2>Mobile-first</h2>
+      <p>dividy dividy </p>
+      <p><a class="btn btn-default" href="#">View details »</a></p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="http://placehold.it/140x140">
+      <h2>Omgneeeeeeeeed</h2>
+      <p>dividy vidasdfjkl;</p>
+      <p><a class="btn btn-default" href="#">View details »</a></p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="http://placehold.it/140x140">
+      <h2>LESS is More</h2>
+      <p>blahdy bladh</p>
+      <p><a class="btn btn-default" href="#">View details »</a></p>
+    </div>
+  </div><!-- /.row -->
+
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
+    <h2 class="featurette-heading">blah blah blah <span class="text-muted">asdf jasd;lfk jas;dlfkj</span></h2>
+    <p class="lead">sample 1 asdfjkl; </p>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-left" src="http://placehold.it/512">
+    <h2 class="featurette-heading">asdf jsa;dlfkj;l <span class="text-muted">Lightweight.</span></h2>
+    <p class="lead">sample 2 asdfjkl;</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
+    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Flatness.</span></h2>
+    <p class="lead">sample 3 samasdf ;lkasjf;laskj.</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <!-- /END THE FEATURETTES -->
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>General Assembly, 2014. <a href="http://ga.co">Made with Love in LA.</a></p>
+  </footer>
+
+</div><!-- /.container -->
