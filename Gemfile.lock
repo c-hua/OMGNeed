@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     angularjs-rails (1.2.16)
+    angularstrap-rails (0.7.6)
     arel (4.0.2)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
@@ -43,9 +44,6 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.1.0)
-    foundation-rails (5.2.2.0)
-      railties (>= 3.1.0)
-      sass (>= 3.2.0)
     hike (1.2.3)
     httparty (0.13.1)
       json (~> 1.8)
@@ -132,9 +130,9 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   angularjs-rails
+  angularstrap-rails
   bcrypt-ruby
   coffee-rails (~> 4.0.0)
-  foundation-rails
   httparty
   jquery-rails
   jquery-ui-rails

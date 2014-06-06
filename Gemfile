@@ -54,6 +54,9 @@ gem 'jquery-ui-rails'
 gem 'active_model_serializers'
 gem 'angularjs-rails'
 gem 'angularstrap-rails'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 
 
 
