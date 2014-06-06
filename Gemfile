@@ -53,6 +53,7 @@ gem 'jquery-ui-rails'
 
 gem 'active_model_serializers'
 gem 'angularjs-rails'
+gem 'angularstrap-rails'
 
 
 
