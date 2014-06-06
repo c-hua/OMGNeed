@@ -1,25 +1,23 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:news_feed, :show, :edit, :delete]
+  before_action :set_user, only: [  :edit, :delete]
   respond_to :json, :html
 
   def news_feed
     
-    @user = User.find(params[:id])
-    @lists = @user.lists.all
-    respond_with @user
+    
+    respond_with current_user
     #<%= link_to 'add product', pages_path(:page => {:list_id => @list.id, :url => p["name"]}), :method => :post %>
   end
 
   def index
-    @users = User.all
-    respond_with @users
+    respond_with current_user
   end
 
-  def show
-    @lists = @user.lists
+  # def show
+  #   @lists = @user.lists
 
-    respond_with @user
-  end
+  #   respond_with @user
+  # end
 
   def edit
   end

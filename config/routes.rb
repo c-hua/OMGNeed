@@ -1,8 +1,9 @@
 Omgneed::Application.routes.draw do
  
-  resources :users
+  resources :users, except: :show
+  resources :lists
   resources :users do
-    member do
+    collection do
       get 'news_feed'
     end
   end
