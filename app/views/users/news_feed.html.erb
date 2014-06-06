@@ -71,27 +71,22 @@
       <tbody>
         <tr ng-repeat="product in products | filter:searchProduct" >
          <td>
-            <div ng-hide="yogurt.editing">
-            {{yogurt.quantity}} oz of {{yogurt.flavor}} yogurt with {{yogurt.topping}}
+            <div ng-hide="products.editing">
+            {{products.name}} {{products.price}} {{products.sale_price}} {{products_brand}}
+
+
+    
             </div>
-            <form ng-show="yogurt.editing" ng-submit="updateYogurt(yogurt);" class="form-group">
-              <label for="quantity">Quantity:</label>
-              <input ng-model="yogurt.quantity" name="quantity" class="form-control">
-              <label for="flavor">Flavor:</label>
-              <input ng-model="yogurt.flavor" name="flavor" class="form-control">
-              <label for="topping">Topping:</label>
-              <input ng-model="yogurt.topping" name="topping" class="form-control">
+            <form ng-show="product.editing" ng-submit="updateProduct(product);" class="form-group">
+              <label for="name">Name:</label>
+              <input ng-model="products.name" name="name" class="form-control">
+     
               <input type="submit" value="Update!" class="btn btn-primary">
             </form>
 
-            <div ng-show="yogurt.details">
+            <div ng-show="product.details">
               <dl>
-                 <dt>Quantity:</dt>
-                 <dd>{{yogurt.quantity}}</dd>
-                 <dt>Flavor:</dt>
-                 <dd>{{yogurt.flavor}}</dd>
-                 <dt>Topping:</dt>
-                 <dd>{{yogurt.topping}}</dd>
+               {{products.name}} {{products.price}} {{products.sale_price}} {{products_brand}}
 
                  <dt>Discount Coupons</dt>
                  <dd>
