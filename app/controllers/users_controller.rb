@@ -1,30 +1,17 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [  :edit, :delete]
+  # before_action :set_user, only: [  :edit, :delete]
   respond_to :json, :html
 
-  def news_feed
-    
-    
+  def news_feed  
     respond_with current_user
     #<%= link_to 'add product', pages_path(:page => {:list_id => @list.id, :url => p["name"]}), :method => :post %>
   end
-
-  def index
-    respond_with current_user
-  end
-
-  # def show
-  #   @lists = @user.lists
-
-  #   respond_with @user
-  # end
 
   def edit
   end
 
   def new
   	@user = User.new
-
   end
 
 
@@ -45,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params)
+    if current_user.update_attributes(user_params)
        respond_to do |format|
           format.html { redirect_to "#"}
           format.json { render nothing: true, status: :no_content}
@@ -59,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    current_user.destroy
     respond_to do |format|
       format.html { redirect_to "#"}
       format.json { render json: { head: :ok } }

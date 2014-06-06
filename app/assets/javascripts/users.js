@@ -49,8 +49,8 @@ Products.query(function(products){
 });
 
 $scope.saveList = function() {
-      console.log($scope.newList);
       $scope.newList.$save(function(list) {
+        console.log(list);
         $scope.lists.push(list);
         $scope.newList = new List();
       });
