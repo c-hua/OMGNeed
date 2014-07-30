@@ -2,3 +2,6 @@ Your personalized real-time shopping newsfeed.
 
 GENERAL ASSEMBLY - May 2014.
 By Colin Campbell, Eric Wu & Christie Hua
+
+This is a SANDBOX version. 
+For the final version, please go to: https://github.com/me33dy/omgneed . 
