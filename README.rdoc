@@ -1,4 +1,6 @@
-Your personalized real-time shopping newsfeed.
+OMGNeed - Your personalized real-time shopping newsfeed.
+
+Built with Ruby on Rails, Angular.JS, PostgreSQL, jQuery, HTTParty, ShopStyle API, Zurb Foundation, RSpec, and HTML/CSS.
 
 GENERAL ASSEMBLY - May 2014.
 By Colin Campbell, Eric Wu & Christie Hua
