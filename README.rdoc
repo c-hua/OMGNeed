@@ -1,3 +1,7 @@
+This is a SANDBOX version. 
+For the final version, please go to: https://github.com/me33dy/omgneed . 
+
+
 OMGNeed - Your personalized real-time shopping newsfeed.
 
 Built with Ruby on Rails, Angular.JS, PostgreSQL, jQuery, HTTParty, ShopStyle API, Zurb Foundation, RSpec, and HTML/CSS.
@@ -5,5 +9,4 @@ Built with Ruby on Rails, Angular.JS, PostgreSQL, jQuery, HTTParty, ShopStyle AP
 GENERAL ASSEMBLY - May 2014.
 By Colin Campbell, Eric Wu & Christie Hua
 
-This is a SANDBOX version. 
-For the final version, please go to: https://github.com/me33dy/omgneed . 
+
